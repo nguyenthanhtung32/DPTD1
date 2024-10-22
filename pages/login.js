@@ -31,7 +31,7 @@ const Login = ({ setIsLogin }) => {
   };
 
   return (
-    <div className="mt-40 md:mt-20">
+    <div className="mt-40 md:mt-40 h-full">
       <title>Đăng nhập</title>
       <div className="py-14 flex items-center justify-center">
         <Form

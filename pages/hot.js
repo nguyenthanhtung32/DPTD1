@@ -130,7 +130,7 @@ function Hot() {
   };
 
   return (
-    <div className="mt-32">
+    <div className="mt-32 h-screen">
       <title>Tuyển Dụng Hot</title>
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />
 

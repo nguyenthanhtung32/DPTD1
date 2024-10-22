@@ -130,7 +130,7 @@ function Recruitment() {
   };
 
   return (
-    <div className="mt-32">
+    <div className="mt-32 h-screen">
       <title>Danh Sách Tuyển Dụng</title>
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />
 
