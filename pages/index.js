@@ -100,13 +100,13 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSend = new FormData();  
+    const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name);
     formDataToSend.append("birthdate", formData.birthdate);
     formDataToSend.append("phone", formData.phone);
     formDataToSend.append("email", formData.email);
     formDataToSend.append("position", formData.position);
-    formDataToSend.append("cv", formData.cv); 
+    formDataToSend.append("cv", formData.cv);
 
     try {
       const response = await axiosClient.post(
@@ -114,7 +114,7 @@ function Home() {
         formDataToSend,
         {
           headers: {
-            "Content-Type": "multipart/form-data", 
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -458,7 +458,7 @@ function Home() {
           </h1>
         </div>
         <div className="flex flex-col md:flex-row justify-center">
-          <div className="w-full md:w-1/3 mb-4 md:mb-0">
+          <div className="w-full md:w-1/2 mb-4 md:mb-0">
             <Carousel
               autoplay
               arrows
@@ -518,7 +518,7 @@ function Home() {
               ))}
             </Carousel>
           </div>
-          <div className="w-full md:w-1/3 mb-4 md:mb-0">
+          <div className="w-full md:w-1/2 mb-4 md:mb-0">
             <Carousel
               autoplay
               arrows
@@ -708,12 +708,14 @@ function Home() {
                   required
                 >
                   <option value="">Vị trí ứng tuyển</option>
-                  <option>Dealer - Nhân viên chia bài</option>
-                  <option>Security Office</option>
-                  <option>Cage Supervisor - Giám sát thu ngân</option>
-                  <option>VIP HOST - Lễ tân HOST</option>
-                  <option>Operation Manager - Quản lí vận hành</option>
-                  <option>Floor Supervisor - Giám sát tầng</option>
+                  {[
+                    ...Object.values(jobDescriptions1),
+                    ...Object.values(jobDescriptions2),
+                  ].map((job, index) => (
+                    <option key={index} value={job.title}>
+                      {job.title} - {job.titleVietnamese}
+                    </option>
+                  ))}
                 </select>
                 <input
                   type="file"
