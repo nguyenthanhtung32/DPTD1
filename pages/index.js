@@ -708,15 +708,29 @@ function Home() {
                   required
                 >
                   <option value="">Vị trí ứng tuyển</option>
-                  {[
-                    ...Object.values(jobDescriptions1),
-                    ...Object.values(jobDescriptions2),
-                  ].map((job, index) => (
-                    <option key={index} value={job.title}>
+
+                  {/* Hiển thị các vị trí từ jobDescriptions1 */}
+                  {Object.values(jobDescriptions1).map((job, index) => (
+                    <option key={`job1-${index}`} value={job.title}>
                       {job.title} - {job.titleVietnamese}
                     </option>
                   ))}
+
+                  {/* Sử dụng Set để loại bỏ các vị trí trùng lặp */}
+                  {Object.values(jobDescriptions2)
+                    .filter(
+                      (job) =>
+                        !new Set(
+                          Object.values(jobDescriptions1).map((j) => j.title)
+                        ).has(job.title)
+                    )
+                    .map((job, index) => (
+                      <option key={`job2-${index}`} value={job.title}>
+                        {job.title} - {job.titleVietnamese}
+                      </option>
+                    ))}
                 </select>
+
                 <input
                   type="file"
                   name="cv"
